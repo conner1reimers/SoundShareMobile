@@ -45,10 +45,10 @@ const styles = StyleSheet.create({
     width: "100%",
     flexDirection: "row",
     alignItems: "center",
-    justifyContent: "flex-start",
-    // flex: 1,
+    justifyContent: "center",
     overflow: 'visible',
-    height: "100%",
+    height: "50%",
+    // backgroundColor: "yellow"
   }, 
 
   image: {
@@ -66,20 +66,23 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     padding: 8,
     width: "98%",
-    height: "100%",
-    flex: 2,
-    position: 'relative'
+    height: "50%",
+    position: 'relative',
+    alignItems: "flex-start",
+    justifyContent: "center",
+    // backgroundColor: "blue"
   },
 
   mainTxt: {
     color: '#efede6',
     fontSize: 12,
-    width: "90%"
+    width: "90%",
+    // backgroundColor: "red",
+    bottom: 39
   },
 
   mainInputContainer: {
     maxHeight: 64,
-    flex: .4,
     position: 'absolute',
     bottom: 24,
     width: "100%",

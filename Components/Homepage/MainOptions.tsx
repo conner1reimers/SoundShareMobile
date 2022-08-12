@@ -7,12 +7,21 @@ import Listening3 from "../../assets/images/listening-new2.svg";
 
 type Props = {}
 
-const MainOptions = (props: Props) => {
+const MainOptions = (props: any) => {
+
+  const pressButton = () => {
+    // props.navigation.navigate('StaticCounter', {
+    //   id: id,
+    // })
+  }
+
+
   return (
     <View style={styles.boxContainer}>
       
       {/* <Pressable Box 1> */}
       <Pressable
+        onPress={pressButton}
         style={({ pressed }) => {
           const pressStyle = pressed && styles.pressed;
           return [pressStyle, styles.bigBoxContain];
@@ -74,9 +83,10 @@ const styles = StyleSheet.create({
 
   boxContainer: {
     flexDirection: "row",
-    width: "100%",
+    width: "95%",
     height: "100%",
     alignItems: "center",
+    justifyContent: "center"
   },
 
   bigBoxContain: {
