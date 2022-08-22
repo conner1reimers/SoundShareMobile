@@ -82,22 +82,28 @@ const globalPlayingReducer = (state = initialState, action: any) => {
           }
         }
       case actionTypes.SET_GLOBAL_SOUND:
-        if (action.sound.sound_creator_id) {
+        if (action.results.sound.creator_id) {
           return {
             ...initialState, 
             playing: false,
             sound: {
-              ...action.sound,
-              creator_id: action.sound.sound_creator_id
+              path: action.results.sound.path,
+              img_path: action.results.sound.img_path,
+              name: action.results.sound.name,
+              creator_id: action.results.sound.creator_id
             },
-            location: action.location
+            location: action.results.location
           }
         } else {
           return {
             ...initialState, 
             playing: false,
-            sound: action.sound,
-            location: action.location
+            sound: {
+              path: action.results.sound.path,
+              img_path: action.results.sound.img_path,
+              name: action.results.sound.name,
+            },
+            location: action.results.location
           }
         }
       case actionTypes.HIDE_GLOBAL:

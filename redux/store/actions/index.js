@@ -46,3 +46,7 @@ export {
     saveBrowseTags
 
 } from './browseActions'
+export {
+    fetchSingleSound
+
+} from './singleSound'

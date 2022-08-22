@@ -65,7 +65,6 @@ export const playAndSetGlobalSound = (sound, location) => {
         type: actionTypes.PLAY_SET_GLOBAL_SOUND,
         sound,
         location
-        
     }
 }
 

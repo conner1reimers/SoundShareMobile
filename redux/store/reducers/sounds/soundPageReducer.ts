@@ -1,3 +1,4 @@
+import { FETCH_SINGLE_SOUND_ASYNC, FETCH_SINGLE_SOUND_SERVER_ASYNC } from "../../actions/actionTypes"
 
 interface SoundComment {
   com_id: string | number,
@@ -19,20 +20,20 @@ interface Sound {
   bpm: number,
   category: string,
   comments: Array<any>,
-  creator_id: number,
-  data: SoundData,
-  date: Date,
+  creator_id: number | null,
+  data: SoundData | null,
+  date: Date | null,
   date_time: string,
   description: string,
   document_with_weights: string,
-  downloads: number,
+  downloads: number | null,
   favs: Array<any>,
   genre: string,
-  id: number,
-  img_path: null,
+  id: number | null,
+  img_path: string | null,
   listorder: null,
   name: string,
-  path: string,
+  path: string | null,
   reposts: Array<any>,
   tags: Array<any>,
   type: string,
@@ -46,7 +47,7 @@ export interface SoundState {
   comments: Array<SoundComment>,
   offset: number,
   refreshFinished: Boolean,
-  sound: Sound | null
+  sound: Sound
 }
 
 
@@ -54,7 +55,31 @@ const initState: SoundState = {
   comments: [],
   offset: 0,
   refreshFinished: false,
-  sound: null
+  sound: {
+    bpm: 0,
+    category: "",
+    comments: [],
+    creator_id: null,
+    data: null,
+    date: null,
+    date_time: "",
+    description: "",
+    document_with_weights: "",
+    downloads: null,
+    favs: [],
+    genre: "",
+    id: null,
+    img_path: null,
+    listorder: null,
+    name: "",
+    path: null,
+    reposts: [],
+    tags: [],
+    type: "",
+    username: "",
+    xtra_tags: [],
+    isFavorited: false
+  }
 }
 
 
@@ -73,12 +98,12 @@ type ActionTypes = ActionsForUi
 
 const soundpageReducer = (state = initState, action: ActionTypes) => {
   switch (action.type) {
-    case "FETCH_SINGLE_SOUND_SERVER_ASYNC":
+    case FETCH_SINGLE_SOUND_SERVER_ASYNC:
       return {
         ...action.results,
         refreshFinished: true
       }
-    case "FETCH_SINGLE_SOUND_ASYNC":
+    case FETCH_SINGLE_SOUND_ASYNC:
       return {
         ...action.results,
         refreshFinished: true

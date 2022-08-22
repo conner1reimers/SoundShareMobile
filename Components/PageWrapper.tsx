@@ -1,11 +1,20 @@
+import { useRoute } from '@react-navigation/native';
 import { StatusBar } from 'expo-status-bar';
-import React from 'react'
+import { FC, ReactChild } from 'react'
 import { SafeAreaView, StyleSheet } from 'react-native'
 import { useSelector } from 'react-redux';
 import { RootState } from '../redux/store/reducers';
 import AuthModal from './shared/Modal/AuthModal';
 import MainModal from './shared/Modal/MainModal';
+import GlobalPlayer from './shared/GlobalPlayer/GlobalPlayer';
+import SideDrawer from './shared/SideDrawer';
 
+interface Props {
+  children: ReactChild,
+  nav: any
+}
+
+const PageWrapper: FC<Props> = ({children, nav}) => {
 
 const PageWrapper: React.FC = ({ children }: any) => {
   const authModalOpen = useSelector((state: RootState) => state.sideDrawer.authModalOpen);
@@ -15,6 +24,7 @@ const PageWrapper: React.FC = ({ children }: any) => {
   return (
     
     <SafeAreaView style={styles.app}>
+      <SideDrawer/>
       {children}
       <StatusBar style="light" />
       
@@ -35,7 +45,9 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: "#1b1f1f"
+    backgroundColor: "#1b1f1f",
+    alignSelf: "flex-start",
+    width: "100%"
   },
 });
 
