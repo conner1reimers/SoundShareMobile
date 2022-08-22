@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react'
-import { FlatList, SafeAreaView, StyleSheet, Text, View } from 'react-native'
+import { FlatList, ScrollView, SafeAreaView, StyleSheet, Text, View } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchRecentSounds } from '../../redux/store/actions'
 import SoundListItem from '../shared/SoundListItem'
+// import {  } from 'react-native-gesture-handler';
 
 
 type Props = {}
@@ -27,9 +28,11 @@ const SoundList = (props: any) => {
 
 
       <View style={styles.soundList}>
-        <SafeAreaView style={{flex: 1}}>
+        
+          {/* <ScrollView nestedScrollEnabled horizontal={true}> */}
           <FlatList
             data={recentSounds}
+            nestedScrollEnabled
             renderItem={
               (itemData) => <SoundListItem navigation={props.navigation} sound={itemData.item} /> }
 
@@ -38,7 +41,8 @@ const SoundList = (props: any) => {
             ListFooterComponent={()=><View style={{height: 10}}/>} 
           
           />
-        </SafeAreaView>
+          {/* </ScrollView> */}
+        
       </View>
     </View>
   )

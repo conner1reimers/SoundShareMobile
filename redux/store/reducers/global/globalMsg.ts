@@ -5,7 +5,8 @@ export interface GlobalMsgState {
   msg: string,
   aModalIsOpen: boolean,
   msgType: any,
-  isOnHome: boolean
+  isOnHome: boolean,
+  modalType: string
 }
 
 const initialState: GlobalMsgState = {
@@ -13,7 +14,8 @@ const initialState: GlobalMsgState = {
     msg: '',
     aModalIsOpen: false,
     msgType: null,
-    isOnHome: false
+    isOnHome: false,
+    modalType: ""
 }
 
 
@@ -43,7 +45,8 @@ const globalMsgReducer = (state = initialState, action: any) => {
       case actionTypes.OPEN_MODAL:
         return {
           ...state,
-          aModalIsOpen: true
+          aModalIsOpen: true,
+          modalType: action.modalType
         }
       case actionTypes.CLOSE_MODAL:
         return {

@@ -10,7 +10,7 @@ const MainTxt = (props: Props) => {
   
 
   return (
-    <>
+    <View style={styles.mainContainer}>
       
       <View style={styles.titleContainer}>
         <Text style={styles.title}>SoundShare</Text>
@@ -34,12 +34,18 @@ const MainTxt = (props: Props) => {
       </View>
 
       
-    </>
+    </View>
   )
 }
 
 const styles = StyleSheet.create({
 
+  mainContainer: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    maxHeight: 300,
+    padding: 32,
+  },
 
   titleContainer: {
     width: "100%",

@@ -3,20 +3,22 @@ import { StyleSheet, Text, View, Image, Pressable } from 'react-native'
 import Listening from "../../assets/images/listening-new.svg";
 import Listening2 from "../../assets/images/listening-new3.svg";
 import Listening3 from "../../assets/images/listening-new2.svg";
+import { useDispatch } from 'react-redux';
 
 
 type Props = {}
 
 const MainOptions = (props: any) => {
 
+  const dispatch = useDispatch();
+
   const pressButton = () => {
-    // props.navigation.navigate('StaticCounter', {
-    //   id: id,
-    // })
+    dispatch({ type: "OPEN_AUTH_MODAL"});
   }
 
 
   return (
+  <View style={styles.optionsContainer}>
     <View style={styles.boxContainer}>
       
       {/* <Pressable Box 1> */}
@@ -33,7 +35,7 @@ const MainOptions = (props: any) => {
               <Text style={[styles.txt, styles.bigTxt]}>Upload/Add effects to a sound..</Text>
             </View>
             <View style={styles.imageContain}>
-              <Listening height={100} width={100}/>
+              {/* <Listening height={100} width={100}/> */}
             </View>
           </View>
       </Pressable>
@@ -52,7 +54,7 @@ const MainOptions = (props: any) => {
             <Text style={styles.txt}>Upload/Add effects to a sound..</Text>
           </View>
           <View style={styles.imageContain}>
-            <Listening2 height={50} width={50}/>
+            {/* <Listening2 height={50} width={50}/> */}
           </View>
         </Pressable>
 
@@ -69,18 +71,27 @@ const MainOptions = (props: any) => {
             <Text style={styles.txt}>Upload/Add effects to a sound..</Text>
           </View>
           <View style={styles.imageContain}>
-            <Listening3 height={50} width={50}/>
+            {/* <Listening3 height={50} width={50}/> */}
           </View>
         </Pressable>
 
       </View>
       
-    </View>
+      </View>
+  </View>
   )
 }
 
 const styles = StyleSheet.create({
-
+  optionsContainer: {
+    width: "100%",
+    minHeight: 190,
+    maxHeight: 250,
+    paddingHorizontal: 24,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  
   boxContainer: {
     flexDirection: "row",
     width: "95%",

@@ -7,6 +7,7 @@ import SoundTypes from './SoundTypes'
 
 const RecentSounds = (props: any) => {
   return (
+    <View style={styles.recentSoundsContainer}>
     <View style={styles.recentSounds}>
 
       <View style={styles.soundTypes}>
@@ -18,10 +19,16 @@ const RecentSounds = (props: any) => {
       </View>
 
     </View>
+  </View>
   )
 }
 
 const styles = StyleSheet.create({
+  recentSoundsContainer: {
+    width: "100%",
+    marginTop: 36
+  },
+
   recentSounds: {
     width: "100%",
   },
