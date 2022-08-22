@@ -9,7 +9,7 @@ import MainTxt from './MainTxt';
 
 const Homepage: React.FC = ({ navigation }: any) => {
   return (
-    <PageWrapper >
+    <PageWrapper nav={navigation} >
       <ScrollView style={styles.scroll}>
         <View style={styles.mainContainer}>
           <MainTxt/>
@@ -20,7 +20,7 @@ const Homepage: React.FC = ({ navigation }: any) => {
         </View>
         
         <View style={styles.recentSoundsContainer}>
-          <RecentSounds navigation={navigation}/>
+          <RecentSounds nav={navigation}/>
         </View>
 
       </ScrollView>

@@ -1,11 +1,14 @@
-import React, { useEffect } from 'react'
+import { FC } from 'react'
 import { StyleSheet, Text, View } from 'react-native'
-import { useDispatch } from 'react-redux'
-import { fetchRecentSounds } from '../../redux/store/actions'
 import SoundList from './SoundList'
 import SoundTypes from './SoundTypes'
 
-const RecentSounds = (props: any) => {
+interface Props {
+  nav: any
+}
+
+
+const RecentSounds: FC<Props> = ({nav}: any) => {
   return (
     <View style={styles.recentSounds}>
 
@@ -14,7 +17,7 @@ const RecentSounds = (props: any) => {
       </View>
 
       <View style={styles.soundList}>
-        <SoundList navigation={props.navigation}/>
+        <SoundList navigation={nav}/>
       </View>
 
     </View>

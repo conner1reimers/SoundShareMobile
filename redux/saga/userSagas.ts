@@ -1,4 +1,3 @@
-import safeJsonStringify from 'safe-json-stringify';
 // import HttpError from '../server/models/http-error';
 // import db from '../server/util/queries';
 
@@ -50,7 +49,7 @@ const fetchUser = async (id: any) => {
       ...result,
       user: {
         ...result.user,
-        join_date: JSON.parse(safeJsonStringify(joinDate)),
+        join_date: JSON.parse(JSON.stringify((joinDate))),
         days: daysSince,
       },
       refreshOptions: {

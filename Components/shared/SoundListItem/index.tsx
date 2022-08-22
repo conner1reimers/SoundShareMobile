@@ -1,13 +1,10 @@
 import React, { useEffect } from 'react'
 import { StyleSheet, Text, View, Image, Pressable } from 'react-native'
 import { useDispatch } from 'react-redux'
-import Play from '../../../assets/images/newplay.svg'
 import Loop from '../../../assets/images/loop-background.svg';
 import Game from '../../../assets/images/game-background.svg';
-import Repost from '../../../assets/images/item-repost.svg';
-import Fav from '../../../assets/images/item-heart.svg';
-import Download from '../../../assets/images/item-download.svg';
 import ActionCounter from './ActionCounters';
+import PlayBtn from './PlayBtn';
 
 
 type Props = {
@@ -27,11 +24,7 @@ const SoundListItem: React.FC<Props> = ({ sound, navigation }) => {
 
       <Pressable android_ripple={{color: "#ccc"}} style={styles.container} onPress={goToSound}>
 
-        <View style={styles.playbtnContain}>
-          <Pressable android_ripple={{color: "#ccc"}} style={styles.playbtn}>
-            <Play height={15} width={15} />
-          </Pressable>
-        </View>
+        <PlayBtn/>
 
         <View style={styles.spacing}/>
 
@@ -99,22 +92,7 @@ const styles = StyleSheet.create({
     height: "100%"
   },
 
-  playbtnContain: {
-    height: "100%",
-    width: 30,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-
-  playbtn: {
-    height: 35,
-    width: 35,
-    justifyContent: "center",
-    alignItems: "center",
-    borderRadius: 30,
-    backgroundColor: "#5b585836",
-    padding: 2,
-  },
+  
 
   nametextContainer: {
     height: "100%",

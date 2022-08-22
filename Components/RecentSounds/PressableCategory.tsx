@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { FC } from 'react'
 import { Pressable, StyleSheet, Text, View } from 'react-native'
 
 type Props = {
@@ -7,15 +7,15 @@ type Props = {
   press: any
 }
 
-const PressableCategory = (props: Props) => {
+const PressableCategory:FC<Props> = ({label, active, press}) => {
   return (
     <Pressable
-          onPress={props.press}
-          style={({ pressed }) => [pressed && styles.pressed, styles.typeContainer, props.active && styles.active]}
+          onPress={press}
+          style={({ pressed }) => [pressed && styles.pressed, styles.typeContainer, active && styles.active]}
           android_ripple={{ color: "#cccc" }}
     >
         <View style={styles.txtContainer}>
-          <Text numberOfLines={1} style={[styles.txt, props.active && styles.activetxt]}>{props.label}</Text>
+          <Text numberOfLines={1} style={[styles.txt, active && styles.activetxt]}>{label}</Text>
         </View>
         
       </Pressable>

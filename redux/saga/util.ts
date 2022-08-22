@@ -22,7 +22,7 @@ export const sendRequest = async (url: string, method: any = "GET", body: any = 
   
 };
 
-export function* loadAndCall(func: any, startLoad: any, finishLoad: any, type: any, payload: any, isServer: any) {
+export function* loadAndCall(func: any, startLoad: any, finishLoad: any, type: any, payload: any, isServer: any, setGlobalSound?: any) {
   try {
 
     if (startLoad.type === "START_ACTION" ||
@@ -37,6 +37,9 @@ export function* loadAndCall(func: any, startLoad: any, finishLoad: any, type: a
       : yield* call(func, payload);
     
     yield put({ type: type, results: fetched });
+    if(setGlobalSound) {
+      yield put({ type: "SET_GLOBAL_SOUND", results: {...fetched, location: "singlesound"} });
+    }
   }
   catch (err) {}
   finally {

@@ -1,9 +1,6 @@
-import React, { useEffect } from 'react'
+import React, { memo, useEffect } from 'react'
 import { StyleSheet, Text, View, Image } from 'react-native'
 import { useDispatch } from 'react-redux'
-import Play from '../../../assets/images/newplay.svg'
-import Loop from '../../../assets/images/loop-background.svg';
-import Game from '../../../assets/images/game-background.svg';
 import Repost from '../../../assets/images/item-repost.svg';
 import Fav from '../../../assets/images/item-heart.svg';
 import Download from '../../../assets/images/item-download.svg';
@@ -13,38 +10,64 @@ type Props = {
   likes: number,
   downloads: number,
   reposts: number,
+  singleSound: boolean
 
 }
 
-const ActionCounter: React.FC<Props> = ({ likes, downloads, reposts}) => {
+const ActionCounter: React.FC<Props> = ({ likes, downloads, reposts,singleSound}) => {
   
+  const heightWidth = singleSound ? 12 : 5;
+
+  const smallTextStyles = {
+    ...styles.smalltxt,
+    fontSize: singleSound ? 13 : 8,
+    paddingHorizontal: singleSound ? 8 : 4,
+
+  }
+
+  const iconContainerStyles = {
+    ...styles.repostIconContainer,
+    height: singleSound ? 21 : 10,
+    width: singleSound ? 21 : 10,
+  }
+
+  const btnContainerStyles = {
+    ...styles.btnContainer,
+    width: singleSound ? "97%" : "50%"
+  }
+
+  const btnSecStyles = {
+    ...styles.btnContainer,
+    height: singleSound ? 25 : 15
+  }
+
   return (
   
 
-  <View style={styles.btnSection}>
-    <View style={styles.btnContainer}>
+  <View style={btnSecStyles}>
+    <View style={btnContainerStyles}>
 
       <View style={styles.counterContain}>
-        <View style={styles.repostIconContainer}>
-          <Repost height={5} width={5} />
+        <View style={iconContainerStyles}>
+          <Repost height={heightWidth} width={heightWidth} />
         </View>
-        <Text style={styles.smalltxt}>{reposts} reposts</Text>
+        <Text style={smallTextStyles}>{reposts} reposts</Text>
       </View>
 
       <View style={styles.counterContain}>
-        <View style={styles.repostIconContainer}>
-          <Fav height={5} width={5} />
+        <View style={iconContainerStyles}>
+          <Fav height={heightWidth} width={heightWidth} />
         </View>
-        <Text style={styles.smalltxt}>{likes} favorites</Text>
+        <Text style={smallTextStyles}>{likes} favorites</Text>
       </View>
 
       <View style={styles.counterContain}>
 
-        <View style={styles.repostIconContainer}>
-          <Download height={5} width={5} />
+        <View style={iconContainerStyles}>
+          <Download height={heightWidth} width={heightWidth} />
         </View>
         <View style={styles.usernameContain}>
-          <Text style={styles.smalltxt}>{downloads} downloads</Text>
+          <Text style={smallTextStyles}>{downloads} downloads</Text>
         </View>
       </View>
       
@@ -64,16 +87,13 @@ const styles = StyleSheet.create({
   },
 
   btnContainer: {
-    width: "50%",
     flexDirection: "row",
     justifyContent: "space-between",
-    alignItems: "flex-start"
+    alignItems: "flex-start",
   },
 
   repostIconContainer: {
     backgroundColor: "#f3eeee1c",
-    height: 10,
-    width: 10,
     justifyContent: "center",
     alignItems: "center",
     borderRadius: 10,
@@ -81,8 +101,6 @@ const styles = StyleSheet.create({
   },
 
   smalltxt: {
-    fontSize: 8,
-    paddingHorizontal: 4,
     justifyContent: "center",
     alignItems: "center",
     color: '#f3eeee83'
@@ -104,4 +122,4 @@ const styles = StyleSheet.create({
 });
 
 
-export default ActionCounter
+export default memo(ActionCounter);
