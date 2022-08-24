@@ -33,3 +33,25 @@ export const refreshActionStop = (refreshAction) => {
         payload: { refreshAction }
     }
 }
+
+export const toggleSidedrawer = () => {
+    return {
+        type: actionTypes.TOGGLE_SIDEDRAWER,
+    }
+}
+
+export const closeSideDrawer = () => {
+    return {
+        type: actionTypes.CLOSE_SIDEDRAWER,
+    }
+}
+
+export const setScroll = (scroll) => {
+    return {
+        type: actionTypes.SET_SCROLL,
+        payload: {
+            x: scroll.x,
+            y: scroll.y
+        }
+    }
+}

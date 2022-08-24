@@ -1,17 +1,27 @@
-import { Animated, Pressable, StyleSheet, Text, View } from 'react-native'
-import React, { useRef, useState } from 'react'
+import { Animated, Platform, Pressable, StyleSheet, Text, View } from 'react-native'
+import React, { useRef, useState, useEffect } from 'react'
 import More from "../../../assets/images/pop.svg";
+import { useNavigation } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { RootStackParamList } from '../../../types/types';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '../../../redux/store/reducers';
+import { closeSideDrawer, toggleSidedrawer } from '../../../redux/store/actions/uiActions';
+import Animation from '../../Lottie/Lottie';
 
 
 type Props = {}
 
 const SideDrawer = (props: Props) => {
-  const [open, setOpen] = useState(false);
-
+  const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>()
   const slideAnim = useRef(new Animated.Value(-300)).current;
-  
+  const dispatch = useDispatch();
+  const open = useSelector((state: RootState) => state.sideDrawer.open);
+  const scroll = useSelector((state: RootState) => state.ui.scroll);
+  const [isScrolled, setIsScrolled] = useState<Boolean>(false);
+
   const openSideDrawer = () => {
-    setOpen((prev) => !prev);
+    dispatch(toggleSidedrawer());
     Animated.timing(slideAnim, {
       toValue: open ? -300 : 0,
       duration: 150,
@@ -20,36 +30,65 @@ const SideDrawer = (props: Props) => {
   }
 
 
+  useEffect(() => {
+    if (scroll.y > 95) setIsScrolled(true);
+    else if(isScrolled) setIsScrolled(false);
+  }, [scroll])
+
+  // console.log(isScrolled)
+
+
   return (
     <View pointerEvents="box-none" style={styles.container}>
 
-      <View pointerEvents="auto" style={styles.toggleSideDrawerContainer}>
+      {!isScrolled && <View
+        pointerEvents="auto"
+        style={[styles.toggleSideDrawerContainer,
+          {
+            marginTop: Platform.OS === "android" ? 0 : 25,
+            left: Platform.OS === "android" ? 8 : 15,
+
+          }]}>
         <Pressable 
             onPress={openSideDrawer} 
             style={styles.toggleSideDrawer}
             pointerEvents="auto"
             >
-          <More height={30} width={30}/>
+          {/* <More height={30} width={30} /> */}
+          <Animation/>
         </Pressable>
-      </View>
+      </View>}
 
       
         
       <Animated.View pointerEvents={open ? "auto" : "none"} style={{
         ...styles.sideDrawerContainer,
+        // display: open ? "flex" : "none",
         transform: [{translateX: slideAnim}]
         
         }}>
           <View style={styles.sideDrawer}>
               <View style={styles.actionList}>
-                <Text>Home</Text>
-                <Text>Home</Text>
-                <Text>Home</Text>
-                <Text>Home</Text>
-                <Text>Home</Text>
+                <Pressable onPress={() => navigation.navigate("Home", {})}>
+                  <Text>Home</Text>
+                  <Text>Home</Text>
+                  <Text>Home</Text>
+                  <Text>Home</Text>
+                  <Text>Home</Text>
+                </Pressable>
               </View>
-          </View>
+        </View>
+        
+        
       </Animated.View>
+
+
+      {open ? (
+        <Pressable style={styles.pressBackdrop} onPress={openSideDrawer}>
+          {/* <View style={styles.backDrop}/> */}
+        </Pressable>
+        
+      ) : null}
 
 
     </View>
@@ -77,8 +116,8 @@ const styles = StyleSheet.create({
     },
 
     toggleSideDrawer: {
-
-
+      maxHeight: 30,
+      maxWidth: 30
     },
 
     sideDrawerContainer: {
@@ -107,5 +146,11 @@ const styles = StyleSheet.create({
       height: "50%",
       justifyContent: "center",
       alignItems: "center"
+    },
+    pressBackdrop: {
+      width: "100%",
+      height: "100%",
+      backgroundColor: "#0c0d0fa1",
+      position: "absolute"
     }
 })

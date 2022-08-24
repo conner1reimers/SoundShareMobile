@@ -6,7 +6,17 @@
   },
   "include": [
     "./Components/**/*.tsx",
-    "./**/*.tsx"
+    "./**/*.tsx",
+    "./types",
+    "./types/**/*.ts",
+    "./types/declarations.d.ts",
+    "./types/types.d.ts",
+    "./redux/store/**/*.js"
   ],
+  "exclude": [
+    "node_modules",
+    "babel.config.js",
+    "metro.config.js",
+  ]
 
 }

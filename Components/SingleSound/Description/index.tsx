@@ -23,8 +23,6 @@ const Description: FC = () => {
   }
 
 
-  console.log(description)
-
 
   return (
       <View style={styles.desc}>

@@ -3,14 +3,9 @@ import { SafeAreaView, ScrollView, StyleSheet, Text, View, LogBox } from 'react-
 import { Provider, useSelector } from 'react-redux';
 import MyStack from './Components/MyStack';
 import { store } from './redux/store';
+import 'react-native-gesture-handler';
 
-export default function App() {
-
-
-  useEffect(() => {
-    LogBox.ignoreLogs(['VirtualizedLists should never be nested']);
-
-  }, []);
+const App = () => {
 
 
 
@@ -20,6 +15,7 @@ export default function App() {
     </Provider>
   );
 
-
-
 }
+
+
+export default App;

@@ -17,19 +17,19 @@ const SingleSound = (props: Props) => {
   const dispatch = useDispatch();
   const sound = useSelector((state: any) => state.singleSound.sound);
 
-  useEffect(() => {
-    // dispatch(fetchSingleSound(253));
-    dispatch(fetchSingleSound(248));
-    // dispatch(fetchSingleSound(380));
+  // useEffect(() => {
+  //   // dispatch(fetchSingleSound(253));
+  //   dispatch(fetchSingleSound(248));
+  //   // dispatch(fetchSingleSound(380));
 
-  }, []);
+  // }, []);
 
 
   
 
 
   return (
-    <PageWrapper nav={props.nav}>
+    <PageWrapper>
       <View style={styles.singleSound}>
 
         <ScrollView style={styles.container}>

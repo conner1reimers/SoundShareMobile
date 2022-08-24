@@ -1,4 +1,4 @@
-import { FETCH_SINGLE_SOUND_ASYNC, FETCH_SINGLE_SOUND_SERVER_ASYNC } from "../../actions/actionTypes"
+import { FETCH_SINGLE_SOUND_ASYNC, FETCH_SINGLE_SOUND_SERVER_ASYNC, SET_SINGLESOUND } from "../../actions/actionTypes"
 
 interface SoundComment {
   com_id: string | number,
@@ -217,7 +217,12 @@ const soundpageReducer = (state = initState, action: ActionTypes) => {
             ...state.sound,
             description: action.payload
         }
-    }
+      }
+    case SET_SINGLESOUND:
+      return {
+        ...initState,
+        sound: action.payload
+      }
     default: 
           return state
   }

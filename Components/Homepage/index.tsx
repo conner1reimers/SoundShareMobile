@@ -6,12 +6,13 @@ import RecentSounds from '../RecentSounds/RecentSounds';
 import MainOptions from './MainOptions';
 import MainTxt from './MainTxt';
 import SafeView from './SafeView';
+import useScroll from '../../util/hooks/useScroll';
+
 
 const data = [
   
   {
     component: MainTxt,
-    nav: false,
     key: "txt"
   },
   {
@@ -21,7 +22,6 @@ const data = [
   },
   {
     component: RecentSounds,
-    nav: true,
     key: "sounds"
   },
 
@@ -29,6 +29,7 @@ const data = [
 
 const Homepage: React.FC = ({ navigation }: any) => {
 
+  const scrollHandler = useScroll();
   
   return (
     <PageWrapper >
@@ -37,6 +38,7 @@ const Homepage: React.FC = ({ navigation }: any) => {
         renderItem={({ item, index }) => <SafeView navigation={item.nav ? navigation : null} component={item.component} />}
         keyExtractor={item => item.key}
         nestedScrollEnabled
+        onScroll={scrollHandler}
         style={styles.scroll}>
       </FlatList>
       

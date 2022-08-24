@@ -35,7 +35,7 @@ const MainOptions = (props: any) => {
               <Text style={[styles.txt, styles.bigTxt]}>Upload/Add effects to a sound..</Text>
             </View>
             <View style={styles.imageContain}>
-              {/* <Listening height={100} width={100}/> */}
+              <Listening height={100} width={100}/>
             </View>
           </View>
       </Pressable>
@@ -54,7 +54,7 @@ const MainOptions = (props: any) => {
             <Text style={styles.txt}>Upload/Add effects to a sound..</Text>
           </View>
           <View style={styles.imageContain}>
-            {/* <Listening2 height={50} width={50}/> */}
+            <Listening2 height={50} width={50}/>
           </View>
         </Pressable>
 
@@ -71,7 +71,7 @@ const MainOptions = (props: any) => {
             <Text style={styles.txt}>Upload/Add effects to a sound..</Text>
           </View>
           <View style={styles.imageContain}>
-            {/* <Listening3 height={50} width={50}/> */}
+            <Listening3 height={50} width={50}/>
           </View>
         </Pressable>
 

@@ -1,14 +1,14 @@
 import { FC } from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 import SoundList from './SoundList'
-import SoundTypes from './SoundTypes'
+import SoundTypes from '../shared/SoundTypes'
 
 interface Props {
   nav: any
 }
 
 
-const RecentSounds: FC<Props> = ({nav}: any) => {
+const RecentSounds: FC<Props> = () => {
   return (
     <View style={styles.recentSoundsContainer}>
     <View style={styles.recentSounds}>
@@ -18,7 +18,7 @@ const RecentSounds: FC<Props> = ({nav}: any) => {
       </View>
 
       <View style={styles.soundList}>
-        <SoundList navigation={nav}/>
+        <SoundList />
       </View>
 
     </View>

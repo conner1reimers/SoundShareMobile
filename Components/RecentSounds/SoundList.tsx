@@ -14,7 +14,8 @@ const SoundList = (props: any) => {
 
   useEffect(() => {
     dispatch(fetchRecentSounds());
-  }, [])
+  }, []);
+
 
   return (
     <View style={styles.soundListContainer}>
@@ -31,17 +32,16 @@ const SoundList = (props: any) => {
         
           {/* <ScrollView nestedScrollEnabled horizontal={true}> */}
           <FlatList
-            data={recentSounds}
+            data={recentSounds ? recentSounds : []}
             nestedScrollEnabled
             renderItem={
-              (itemData) => <SoundListItem navigation={props.navigation} sound={itemData.item} /> }
+              (itemData) => <SoundListItem sound={itemData.item} /> }
 
             keyExtractor={(item) => item.id}
             ListHeaderComponent={() => <View style={{ height: 10 }} />} 
             ListFooterComponent={()=><View style={{height: 10}}/>} 
           
           />
-          {/* </ScrollView> */}
         
       </View>
     </View>

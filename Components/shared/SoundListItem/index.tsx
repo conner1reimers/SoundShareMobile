@@ -5,17 +5,24 @@ import Loop from '../../../assets/images/loop-background.svg';
 import Game from '../../../assets/images/game-background.svg';
 import ActionCounter from './ActionCounters';
 import PlayBtn from './PlayBtn';
-
+import { useNavigation } from '@react-navigation/native';
+import { NativeStackNavigationProp  } from "@react-navigation/native-stack";
+import { RootStackParamList } from '../../../types/types';
+import { setSingleSound } from '../../../redux/store/actions/singleSound';
+import { closeSideDrawer } from '../../../redux/store/actions/uiActions';
 
 type Props = {
   sound: any,
-  navigation: any
 }
 
-const SoundListItem: React.FC<Props> = ({ sound, navigation }) => {
+const SoundListItem: React.FC<Props> = ({ sound }) => {
+  const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
+  const dispatch = useDispatch();
 
   const goToSound = () => {
-    navigation.navigate("SingleSound", sound.id);
+    dispatch(setSingleSound(sound));
+    dispatch(closeSideDrawer());
+    navigation.navigate("SingleSound", {id: sound.id});
   };
 
   
@@ -55,12 +62,10 @@ const SoundListItem: React.FC<Props> = ({ sound, navigation }) => {
               likes={sound.favs.length}
               downloads={sound.downloads}
               reposts={sound.reposts.length}
+              singleSound={false}
             />
             
           </View>
-          
-
-          
         </View>
 
         

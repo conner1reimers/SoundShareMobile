@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Pressable, StyleSheet, Text, View } from 'react-native'
-import PressableCategory from './PressableCategory'
+import PressableCategory from '../RecentSounds/PressableCategory'
 
 type Props = {}
 

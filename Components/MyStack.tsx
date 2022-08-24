@@ -4,6 +4,7 @@ import { createNativeStackNavigator  } from "@react-navigation/native-stack";
 import SingleSound from './SingleSound';
 import Homepage from './Homepage';
 import { Text } from 'react-native';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 
 const Stack = createNativeStackNavigator();
@@ -11,24 +12,26 @@ const Stack = createNativeStackNavigator();
 
 const MyStack: FC = () => {
   return (
-    <NavigationContainer>
-      <Stack.Navigator initialRouteName="SingleSound">
+    <GestureHandlerRootView style={{flex: 1}}>
+      <NavigationContainer>
+        <Stack.Navigator initialRouteName="Home">
 
-        <Stack.Screen
-          name="Home"
-          component={Homepage}
-          options={{header: () => null}}
+          <Stack.Screen
+            name="Home"
+            component={Homepage}
+            options={{header: () => null}}
 
-        />
+          />
 
-        <Stack.Screen
-          name="SingleSound"
-          component={SingleSound}
-          options={{header: () => null}}
-        />
+          <Stack.Screen
+            name="SingleSound"
+            component={SingleSound}
+            options={{header: () => null}}
+          />
 
-      </Stack.Navigator>
-    </NavigationContainer>
+        </Stack.Navigator>
+      </NavigationContainer>
+    </GestureHandlerRootView>
   )
 }
 

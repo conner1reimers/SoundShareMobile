@@ -16,7 +16,11 @@ export interface UiState {
     initialLoad: boolean,
     adShow: boolean,
     homeLoader: boolean,
-    modalRef: null | React.MutableRefObject<any>
+    modalRef: null | React.MutableRefObject<any>,
+    scroll: {
+        x: number,
+        y: number
+    }
 }
 
 
@@ -33,7 +37,11 @@ const initState: UiState = {
     initialLoad: false,
     adShow: false,
     homeLoader: false,
-    modalRef: null
+    modalRef: null,
+    scroll: {
+        x: 0,
+        y: 0
+    }
 }
 
 
@@ -163,6 +171,14 @@ const uiReducer = (state = initState, action: ActionTypes) => {
             return {
                 ...state,
                 modalRef: action.payload
+            }
+        case actionTypes.SET_SCROLL:
+            return {
+                ...state,
+                scroll: {
+                    x: action.payload.x,
+                    y: action.payload.y
+                }
             }
         default:
             return state

@@ -8,33 +8,34 @@ import AuthModal from './shared/Modal/AuthModal';
 import MainModal from './shared/Modal/MainModal';
 import GlobalPlayer from './shared/GlobalPlayer/GlobalPlayer';
 import SideDrawer from './shared/SideDrawer';
+import BottomNav from './shared/Nav/BottomNav';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 interface Props {
-  children: ReactChild,
-  nav: any
+  children: any,
 }
 
-const PageWrapper: FC<Props> = ({children, nav}) => {
 
-const PageWrapper: React.FC = ({ children }: any) => {
+const PageWrapper: React.FC<Props> = ({ children }) => {
   const authModalOpen = useSelector((state: RootState) => state.sideDrawer.authModalOpen);
   // const uploadModalOpen = useSelector((state: RootState) => state.u.authModalOpen);
 
 
   return (
-    
     <SafeAreaView style={styles.app}>
-      <SideDrawer/>
+      <SideDrawer />
+      
       {children}
       <StatusBar style="light" />
       
+      <GlobalPlayer/>
+
       <MainModal open={authModalOpen} type="AUTH">
         <AuthModal/>
       </MainModal>
-      
-      {/* <MainModal open={modalOpen}>
-        <AuthModal/>
-      </MainModal> */}
+
+      <BottomNav/>
+
 
     </SafeAreaView>
   )
