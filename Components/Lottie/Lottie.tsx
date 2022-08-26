@@ -3,7 +3,7 @@ import LottieView from 'lottie-react-native';
 import { View } from 'react-native';
 
 
-const Animation = () => {
+const Animation = (props: any) => {
 
   const ref = useRef<any>(null);
 
@@ -18,23 +18,22 @@ const Animation = () => {
 
   return (
     <View style={{
-      height: 50,
-      width: 50,
-          // backgroundColor: "green",
+      height: props.modal ? 100 : 50,
+      width: props.modal ? 100 : 50,
       justifyContent: "center",
-      alignItems: "center",
+      alignItems: props.modal ? "flex-end" : "center",
       overflow: "visible"
     }}>
       <LottieView
         style={{
-          height: 50,
-          width: 50,
+          height: props.modal ? 140 : 50,
+          width: props.modal ? 100 : 50,
           overflow: "visible",
-          // backgroundColor: "red"
+          alignItems: props.modal ? "flex-start" : "center",
         }}
-        resizeMode="center"
+        resizeMode={props.modal ? "contain" : "center"}
         ref={ref}
-        autoSize
+        autoSize={!props.modal}
         source={require('./animationDatas/blueMain.json')}
         autoPlay
         loop />

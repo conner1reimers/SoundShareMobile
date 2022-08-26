@@ -57,6 +57,10 @@ export const SET_SINGLESOUND = 'SET_SINGLESOUND';
 export const TOGGLE_SIDEDRAWER = 'TOGGLE_SIDEDRAWER';
 export const CLOSE_SIDEDRAWER = 'CLOSE_SIDEDRAWER';
 export const SET_SCROLL = 'SET_SCROLL';
+export const SET_LOGO_OFF = 'SET_LOGO_OFF';
+export const SET_LOGO_ON = 'SET_LOGO_ON';
+export const TOGGLE_AUTH_POPUP = 'TOGGLE_AUTH_POPUP';
+export const OPEN_AUTH_MODAL = 'OPEN_AUTH_MODAL';
 
 
 

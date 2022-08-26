@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View } from 'react-native'
 import { useSelector } from 'react-redux'
-import { textPrimary, textSecondary} from '../../../util/style/variables';
-import BasicText from '../../Text/BasicText';
+import { textPrimary, textSecondary} from '../../../../util/style/variables';
+import BasicText from '../../../shared/Text/BasicText';
 import { FC } from 'react'
 
 

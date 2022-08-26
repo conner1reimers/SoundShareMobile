@@ -1,4 +1,4 @@
-import { CLOSE_SIDEDRAWER, TOGGLE_SIDEDRAWER } from "../../actions/actionTypes"
+import { CLOSE_SIDEDRAWER, OPEN_AUTH_MODAL, TOGGLE_SIDEDRAWER } from "../../actions/actionTypes"
 
 const initialState = {
   open: false,
@@ -18,7 +18,7 @@ const sideDrawerReducer = (state = initialState, action) => {
           ...state,
           open: false
         }
-      case 'OPEN_AUTH_MODAL':
+      case OPEN_AUTH_MODAL:
         return {
           ...state,
           authModalOpen: true

@@ -1,9 +1,10 @@
 import React from 'react'
 import { StyleSheet, Text, View, Image, Pressable } from 'react-native'
-import Listening from "../../assets/images/listening-new.svg";
-import Listening2 from "../../assets/images/listening-new3.svg";
-import Listening3 from "../../assets/images/listening-new2.svg";
+import Listening from "../../../assets/images/listening-new.svg";
+import Listening2 from "../../../assets/images/listening-new3.svg";
+import Listening3 from "../../../assets/images/listening-new2.svg";
 import { useDispatch } from 'react-redux';
+import { openAuthModal } from '../../../redux/store/actions/uiActions';
 
 
 type Props = {}
@@ -13,7 +14,7 @@ const MainOptions = (props: any) => {
   const dispatch = useDispatch();
 
   const pressButton = () => {
-    dispatch({ type: "OPEN_AUTH_MODAL"});
+    dispatch(openAuthModal());
   }
 
 

@@ -1,7 +1,7 @@
 import { StyleSheet, Image, View } from 'react-native'
 import React, { FC } from 'react'
 import { useSelector } from 'react-redux'
-import Loop from '../../../assets/images/loop-background.svg'
+import Loop from '../../../../assets/images/loop-background.svg'
 
 const SoundImage: FC = () => {
 

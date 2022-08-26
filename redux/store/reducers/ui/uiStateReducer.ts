@@ -16,11 +16,13 @@ export interface UiState {
     initialLoad: boolean,
     adShow: boolean,
     homeLoader: boolean,
+    logoIsOn: boolean,
     modalRef: null | React.MutableRefObject<any>,
     scroll: {
         x: number,
         y: number
-    }
+    },
+    authPopup: boolean
 }
 
 
@@ -38,10 +40,12 @@ const initState: UiState = {
     adShow: false,
     homeLoader: false,
     modalRef: null,
+    logoIsOn: true,
     scroll: {
         x: 0,
         y: 0
-    }
+    },
+    authPopup: false
 }
 
 
@@ -179,6 +183,21 @@ const uiReducer = (state = initState, action: ActionTypes) => {
                     x: action.payload.x,
                     y: action.payload.y
                 }
+            }
+        case actionTypes.SET_LOGO_OFF:
+            return {
+                ...state,
+                logoIsOn: false
+            }
+        case actionTypes.SET_LOGO_ON:
+            return {
+                ...state,
+                logoIsOn: true
+            }
+        case actionTypes.TOGGLE_AUTH_POPUP:
+            return {
+                ...state,
+                authPopup: !state.authPopup
             }
         default:
             return state

@@ -1,8 +1,8 @@
 import { Pressable, StyleSheet, Text, View } from 'react-native'
 import React, { FC } from 'react'
-import ActionCounter from '../../shared/SoundListItem/ActionCounters'
+import ActionCounter from '../../../shared/SoundListItem/ActionCounters'
 import { useSelector } from 'react-redux'
-import { RootState } from '../../../redux/store/reducers'
+import { RootState } from '../../../../redux/store/reducers'
 
 type Props = {
     download?: boolean,

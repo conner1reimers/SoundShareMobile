@@ -10,6 +10,7 @@ import GlobalPlayer from './shared/GlobalPlayer/GlobalPlayer';
 import SideDrawer from './shared/SideDrawer';
 import BottomNav from './shared/Nav/BottomNav';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import AuthPopup from './shared/Modal/AuthPopup';
 
 interface Props {
   children: any,
@@ -23,16 +24,19 @@ const PageWrapper: React.FC<Props> = ({ children }) => {
 
   return (
     <SafeAreaView style={styles.app}>
+      <StatusBar style="light" />
       <SideDrawer />
       
       {children}
-      <StatusBar style="light" />
+
       
       <GlobalPlayer/>
 
       <MainModal open={authModalOpen} type="AUTH">
         <AuthModal/>
       </MainModal>
+
+      <AuthPopup/>
 
       <BottomNav/>
 

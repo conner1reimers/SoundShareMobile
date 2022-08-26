@@ -1,12 +1,12 @@
 import { StatusBar } from 'expo-status-bar';
 import { FlatList, SafeAreaView, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { Provider, useSelector } from 'react-redux';
-import PageWrapper from '../PageWrapper';
-import RecentSounds from '../RecentSounds/RecentSounds';
+import PageWrapper from '../../PageWrapper';
+import RecentSounds from '../../RecentSounds/RecentSounds';
 import MainOptions from './MainOptions';
 import MainTxt from './MainTxt';
 import SafeView from './SafeView';
-import useScroll from '../../util/hooks/useScroll';
+import useScroll from '../../../util/hooks/useScroll';
 
 
 const data = [

@@ -55,3 +55,27 @@ export const setScroll = (scroll) => {
         }
     }
 }
+
+export const setLogoOff = () => {
+    return {
+        type: actionTypes.SET_LOGO_OFF,
+    }
+}
+
+export const setLogoOn = () => {
+    return {
+        type: actionTypes.SET_LOGO_ON,
+    }
+}
+
+export const toggleAuthPopup = () => {
+    return {
+        type: actionTypes.TOGGLE_AUTH_POPUP,
+    }
+}
+
+export const openAuthModal = () => {
+    return {
+        type: actionTypes.OPEN_AUTH_MODAL
+    }
+}

@@ -9,7 +9,7 @@ import { Audio } from 'expo-av';
 import { Sound } from 'expo-av/build/Audio'
 import { Gesture, GestureDetector, GestureHandlerRootView } from 'react-native-gesture-handler'
 import Animated, { useAnimatedStyle, useSharedValue, withSpring } from 'react-native-reanimated'
-import BasicText from '../../Text/BasicText'
+import BasicText from '../Text/BasicText'
 import Close from '../../../assets/images/close.svg'
 import { resetGlobalSound } from '../../../redux/store/actions'
 import { openGlobalBackUp } from '../../../redux/store/actions/globalSound'
@@ -45,10 +45,12 @@ const GlobalPlayer: FC = (props: Props) => {
 
 
   const loadSound = async () => {
+    
     const { sound: playbackObject } = await Audio.Sound.createAsync(
         { uri: `https://soundshare-bucket.s3.us-east-2.amazonaws.com/${path}` },
         { shouldPlay: true }
     );
+
     setCurrentSound(playbackObject);
 
     // let playing = await playbackObject.playAsync();
@@ -145,8 +147,6 @@ const GlobalPlayer: FC = (props: Props) => {
     }
   })
 
-
-
   const gesture = Gesture.Pan()
     .onBegin((e) => {
       isPressed.value = true;
@@ -239,23 +239,20 @@ const GlobalPlayer: FC = (props: Props) => {
     }, [currentSound])
 
   
-    const composed = Gesture.Simultaneous(
-      gesture,
-      Gesture.Simultaneous(zoomGesture, rotateGesture)
-    );
+  const composed = Gesture.Simultaneous(
+    gesture,
+    Gesture.Simultaneous(zoomGesture, rotateGesture)
+  );
 
 
 
 
-  console.log(isOpen)
 
   useEffect(() => {
     if (isOpen && !playerOpen.value) {
-      console.log("opening.")
       playerOpen.value = true;
     }
     else if (playerOpen.value) {
-      console.log("closing.")
       playerOpen.value = false;
     }
   }, [isOpen]);

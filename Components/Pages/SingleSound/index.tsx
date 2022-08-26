@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react'
 import { StyleSheet, Text, View, Image, ScrollView } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
-import PageWrapper from '../PageWrapper'
-import {fetchSingleSound} from '../../redux/store/actions';
+import PageWrapper from '../../PageWrapper'
+import {fetchSingleSound} from '../../../redux/store/actions';
 import SingleSoundHeader from './Header';
 import Description from './Description';
 import SSButtons from './Buttons';

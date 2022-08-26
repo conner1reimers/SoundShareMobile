@@ -14,7 +14,7 @@ const MainTxt = (props: Props) => {
       
       <View style={styles.titleContainer}>
         <Text style={styles.title}>SoundShare</Text>
-        <Image style={styles.image} source={require('../../assets/images/goal.png')} />
+        <Image style={styles.image} source={require('../../../assets/images/goal.png')} />
       </View>
 
       <View style={styles.mainTxtContainer}>

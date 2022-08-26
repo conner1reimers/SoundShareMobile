@@ -1,8 +1,8 @@
 import { StyleSheet, Text, View, Image, Pressable } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
-import { RootState } from '../../../redux/store/reducers'
-import { textPrimary, textSecondary } from '../../../util/style/variables'
-import BasicText from '../../Text/BasicText'
+import { RootState } from '../../../../redux/store/reducers'
+import { textPrimary, textSecondary } from '../../../../util/style/variables'
+import BasicText from '../../../shared/Text/BasicText'
 import { FC, useState } from 'react'
 
 

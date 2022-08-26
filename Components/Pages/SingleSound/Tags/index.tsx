@@ -1,9 +1,9 @@
 import { FC } from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 import { useSelector } from 'react-redux'
-import { RootState } from '../../../redux/store/reducers'
-import { textSecondary } from '../../../util/style/variables'
-import BasicText from '../../Text/BasicText'
+import { RootState } from '../../../../redux/store/reducers'
+import { textSecondary } from '../../../../util/style/variables'
+import BasicText from '../../../shared/Text/BasicText'
 
 type Props = {}
 

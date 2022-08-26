@@ -1,41 +1,71 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { Pressable, StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import Ipod from "../../../assets/images/ipod.svg";
 import Frame from "../../../assets/images/frame.svg";
 import Followers from "../../../assets/images/followers.svg";
 import Fx from "../../../assets/images/fx.svg";
+import Bird from "../../../assets/images/bird.svg";
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '../../../redux/store/reducers';
+import { useNavigation } from '@react-navigation/native';
+import { RootStackParamList } from '../../../types/types';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { toggleAuthPopup } from '../../../redux/store/actions/uiActions';
+
 
 
 type Props = {}
 
 const BottomNav = (props: Props) => {
+  const isLoggedIn = useSelector((state: RootState) => state.user.isLoggedIn);
+  const userId = useSelector((state: RootState) => state.user.userId);
+  const dispatch = useDispatch();
+
+  const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
+
+  const uploadSound = () => {
+    if (isLoggedIn) navigation.navigate("UploadSound", {});
+    else dispatch(toggleAuthPopup());
+  }
+
+  const goToUser = () => {
+    if (isLoggedIn) navigation.navigate("UserPage", {id: userId});
+    else dispatch(toggleAuthPopup());
+  }
+
   return (
     <View pointerEvents="box-none" style={styles.container}>
       <View style={styles.bottomNavContainer}>
         
-        <View style={styles.navItemContain}>
+        <Pressable style={styles.navItemContain} onPress={goToUser}>
           <View style={styles.navItem}>
             <Ipod height={22} width={22}/>
           </View>
-        </View>
+        </Pressable>
 
-        <View style={styles.navItemContain}>
+        <Pressable style={styles.navItemContain} onPress={goToUser}>
           <View style={styles.navItem}>
             <Frame height={22} width={22}/>
           </View>
-        </View>
+        </Pressable>
 
-        <View style={styles.navItemContain}>
-          <View style={styles.navItem}>
-            <Followers height={22} width={22}/>
-          </View>
-        </View>
+        <Pressable style={styles.navItemContain} onPress={uploadSound}>
+            <View style={styles.navItem}>
+              <Bird height={22} width={22}/>
+            </View>
+        </Pressable>
 
-        <View style={styles.navItemContain}>
+        <Pressable style={styles.navItemContain} onPress={goToUser}>
+            <View style={styles.navItem}>
+              <Followers height={22} width={22}/>
+            </View>
+        </Pressable>
+
+        <Pressable style={styles.navItemContain} onPress={goToUser}>
           <View style={styles.navItem}>
             <Fx height={22} width={22}/>
           </View>
-        </View>
+        </Pressable>
 
       </View>
     </View>
@@ -51,7 +81,9 @@ const styles = StyleSheet.create({
     height: "100%",
     position: "absolute",
     bottom: 0,
-    justifyContent: "flex-end"
+    justifyContent: "flex-end",
+    zIndex: 1
+
   },
 
   bottomNavContainer: {
@@ -61,7 +93,8 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "flex-start",
     borderTopColor: "#252b2eab",
-    borderTopWidth: 1
+    borderTopWidth: 1,
+    zIndex: 3
   },
 
   navItemContain: {
