@@ -1,6 +1,43 @@
-export const textPrimary = "#efede6";
-export const textSecondary = "#efede6d3";
-export const borderPrimary = "rgba(68,74,70,.21176470588235294)";
+export const textPrimary = '#efede6';
+export const textSecondary = '#efede6d3';
+export const borderPrimary = 'rgba(68,74,70,.21176470588235294)';
 
+export const colordarkblue = '#191e23';
+export const colorlightblue = '#53c9cc';
+export const colorlightblue2 = '#53cacc6c';
+export const colorlightblue3 = '#53cacc2f';
+export const colormediumblue = '#335566';
+export const colorgrey = '#383d44';
+export const colormediumblue2 = '#9ac1d0';
+export const colorteal = '#3f6162';
+export const colorlightteal = '#96b4a7';
+export const colorred = '#ce665c';
+export const colorwhite = '#efede6d3';
+export const colorwhite2 = '#efede6';
+export const colorwhite3 = '#efede6b4';
+export const colordarker = '#1b1f1f';
+export const colorgreen = '#7aa376';
+export const colorbluey = '#90bdb1';
+export const colorcoolgrey = 'rgba(108, 121, 124, 0.24)';
+export const colormainblue = '#599db9';
+export const colordeepblue = '#2c82adbd';
+export const colordeepblue2 = '#2c82ad38';
+export const coloroffwhite = '#99aab51f';
+export const colororange = '#d5692a';
+export const colororange2 = '#d5692a';
+export const coloroffwhite2 = '#c6dad7c4';
+export const colordiscord = '#2c2f33';
+export const colordiscord2 = '#2c2f3393';
+export const colornewgrey = '#262c2d';
+export const colordarksky = '#092538';
+export const colorfacebook = '#475993';
 
-
+export const darkColor = '#0E1011';
+export const darkColor2 = '#14151B';
+export const redColor = '#EB395A';
+export const blueColor = '#3ABECD';
+export const greenColor = '#3D8B4F';
+export const darkGreenColor = '#1B211A';
+export const purpleColor = '#BD94CD';
+export const darkishColor = '#181B1C';
+export const lightBrownColor = '#947A77';

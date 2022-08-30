@@ -3,5 +3,7 @@
         "activityBar.background": "#381773",
         "titleBar.activeBackground": "#4E20A1",
         "titleBar.activeForeground": "#FBF9FE"
-    }
+    },
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
 }

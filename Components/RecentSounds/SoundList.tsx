@@ -1,12 +1,10 @@
-import React, { useEffect } from 'react'
-import { FlatList, ScrollView, SafeAreaView, StyleSheet, Text, View } from 'react-native'
-import { useDispatch, useSelector } from 'react-redux'
-import { fetchRecentSounds } from '../../redux/store/actions'
-import SoundListItem from '../shared/SoundListItem'
-// import {  } from 'react-native-gesture-handler';
+import React, { useEffect } from 'react';
+import { FlatList, ScrollView, SafeAreaView, StyleSheet, Text, View } from 'react-native';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchRecentSounds } from '../../redux/store/actions';
+import SoundListItem from '../shared/SoundListItem';
 
-
-type Props = {}
+type Props = {};
 
 const SoundList = (props: any) => {
   const dispatch = useDispatch();
@@ -16,60 +14,47 @@ const SoundList = (props: any) => {
     dispatch(fetchRecentSounds());
   }, []);
 
-
   return (
     <View style={styles.soundListContainer}>
       <View style={styles.recentSoundsTxt}>
-        
-        <Text style={styles.txt}>
-          Sounds Uploaded Recently...
-        </Text>
-        <View style={{height: 10}}/>
+        <Text style={styles.txt}>Sounds Uploaded Recently...</Text>
+        <View style={{ height: 10 }} />
       </View>
-
 
       <View style={styles.soundList}>
-        
-          {/* <ScrollView nestedScrollEnabled horizontal={true}> */}
-          <FlatList
-            data={recentSounds ? recentSounds : []}
-            nestedScrollEnabled
-            renderItem={
-              (itemData) => <SoundListItem sound={itemData.item} /> }
-
-            keyExtractor={(item) => item.id}
-            ListHeaderComponent={() => <View style={{ height: 10 }} />} 
-            ListFooterComponent={()=><View style={{height: 10}}/>} 
-          
-          />
-        
+        <FlatList
+          data={recentSounds ? recentSounds : []}
+          nestedScrollEnabled
+          renderItem={(itemData) => <SoundListItem sound={itemData.item} />}
+          keyExtractor={(item) => item.id}
+          ListHeaderComponent={() => <View style={{ height: 10 }} />}
+          ListFooterComponent={() => <View style={{ height: 10 }} />}
+        />
       </View>
     </View>
-  )
-}
+  );
+};
 
 const styles = StyleSheet.create({
   soundListContainer: {
-    marginTop: 12  
+    marginTop: 12,
   },
 
   soundList: {
-
+    paddingBottom: 40,
   },
 
   recentSoundsTxt: {
-    justifyContent: "flex-start",
-    alignItems: "center",
+    justifyContent: 'flex-start',
+    alignItems: 'center',
     borderBottomWidth: 2,
-    borderBottomColor: "#efede6"
+    borderBottomColor: '#efede6',
   },
 
   txt: {
-    fontWeight: "bold",
-    color: "#efede6"
-  }
+    fontWeight: 'bold',
+    color: '#efede6',
+  },
 });
-
-
 
 export default SoundList;
